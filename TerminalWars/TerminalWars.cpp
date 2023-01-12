@@ -2,11 +2,11 @@
 //
 
 #include "TerminalWars.h"
-
-using namespace std;
+#include "Game.h"
 
 int main()
 {
-	cout << "Hello CMake." << endl;
+	Game game;
+	game.RunGame();
 	return 0;
 }
