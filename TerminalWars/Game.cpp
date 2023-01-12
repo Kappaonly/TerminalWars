@@ -69,14 +69,13 @@ void Game::RunGame() {
 
 void Game::ProcessRaidParties() {
     for (auto it = raidParties.begin(); it != raidParties.end();) {
-        RaidParty* party = it.base();
-        party->daysRemaining--;
-        if (party->daysRemaining == 0) {
+        it->daysRemaining--;
+        if (it->daysRemaining == 0) {
             int enemySoldiers = GetRandomNumber(2 + (currentDay / 5) * 10, currentDay * 20);
-            if (party->soldierAmount < enemySoldiers) {
+            if (it->soldierAmount < enemySoldiers) {
                 std::cout << "Your raid party has perished in battle" << std::endl;
             } else {
-                playerVillage.ReturnParty(party->soldierAmount - enemySoldiers);
+                playerVillage.ReturnParty(it->soldierAmount - enemySoldiers);
             }
             it = raidParties.erase(it);
         } else ++it;
